@@ -1,0 +1,90 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Title Styling */
+.gallery-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #007bff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Date Headers */
+.gallery-date {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #007bff;
+    display: inline-block;
+}
+
+/* Grid Layout */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Dynamic columns */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Image Container */
+.gallery-item {
+    display: inline-block;
+    visibility: visible;
+    opacity: 1 !important;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Images */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effects */
+.gallery-item:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* No Images Message */
+.no-images {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #555;
+}
+
+.no-images i {
+    font-size: 4rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        /* Adjust grid on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        /* Smaller grid for mobile */
+    }
+}

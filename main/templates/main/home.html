@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCC Apenkwa</title>
+
+    <!-- Bootstrap & FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Our Church</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'event' %}">Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'sermons' %}">Sermons</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+            <li class="nav-item">
+              <button class="btn btn-light px-3 giving-btn" onclick="location.href='{% url 'giving' %}'">
+                <i class="fas fa-hand-holding-heart"></i> Giving
+              </button>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Add Info</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center">
+      <div class="container">
+        <h1 class="display-3 fw-bold">Welcome to Our Church</h1>
+        <p class="lead">A place of faith, hope, and love.</p>
+        <a href="https://www.youtube.com/@ccc_apenkwa?sub_confirmation=1" class="btn btn-light btn-lg">
+          Join Us This Sunday
+        </a>
+      </div>
+    </header>
+
+    <!-- About Us Section -->
+    <section class="about-section text-center">
+      <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <p class="lead">
+          CCC Apenkwa is a Christ-centered church committed to spreading faith, love, and service. 
+          Our mission is to bring people closer to God and empower them to live a life of purpose.
+        </p>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="info-card">
+              <h4><i class="fas fa-church"></i> Our Mission</h4>
+              <p>To transform lives through faith and service.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-card">
+              <h4><i class="fas fa-praying-hands"></i> Our Beliefs</h4>
+              <p>At Calvary Charismatic Centre, we base all of our beliefs on the authority of Scripture. 
+                We strive to maintain Biblical standards in life and leadership.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info-card">
+              <h4><i class="fas fa-users"></i> Our Community</h4>
+              <p>A family united in Christ, welcoming all with love.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section class="events-section py-5">
+      <div class="container">
+        <h2 class="section-title text-center">Upcoming Events</h2>
+        <p class="text-center text-muted">Join us for our upcoming church events.</p>
+        <div class="row">
+          {% for event in upcoming_events %}
+          <div class="col-md-6">
+            <div class="event-card">
+              {% if event.image %}
+              <img src="{{ event.image.url }}" alt="{{ event.title }}" class="event-img" />
+              {% endif %}
+              <h4>{{ event.title }}</h4>
+
+              <!-- Display Event Date -->
+              <p class="event-date">
+                {% if event.is_recurring and event.next_occurrence %}
+                  {% if event.next_occurrence.month == today.month and event.next_occurrence.year == today.year %}
+                    {{ event.next_occurrence|date:"F j, Y" }}
+                  {% else %}
+                    Recurs on {{ event.next_occurrence|date:"F j, Y" }}
+                  {% endif %}
+                {% elif event.end_date %}
+                  {{ event.date|date:"F j, Y" }} - {{ event.end_date|date:"F j, Y" }}
+                {% else %}
+                  {{ event.date|date:"F j, Y" }}
+                {% endif %}
+              </p>
+
+              <!-- Display Event Time -->
+              {% if event.start_time %}
+                <p class="event-time">
+                  <strong>Time:</strong> {{ event.start_time|time:"g:i A" }}{% if event.end_time %} - {{ event.end_time|time:"g:i A" }}{% endif %}
+                </p>
+              {% endif %}
+
+              <p>{{ event.description }}</p>
+            </div>
+          </div>
+          {% empty %}
+          <p class="text-center">No upcoming events at the moment.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-section">
+      <div class="container text-center">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="lead">We’d love to hear from you! Reach out to us anytime.</p>
+        <div class="row">
+          <div class="col-md-4">
+            <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+            <p>123 Church Street, Apenkwa, Ghana</p>
+          </div>
+          <div class="col-md-4">
+            <h4><i class="fas fa-phone"></i> Phone</h4>
+            <p>+233 123 456 789</p>
+          </div>
+          <div class="col-md-4">
+            <h4><i class="fas fa-envelope"></i> Email</h4>
+            <p><a href="mailto:info@ccc-apenkwa.org">info@ccc-apenkwa.org</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      <p>&copy; 2025 Our Church. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

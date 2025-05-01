@@ -1,0 +1,157 @@
+/* General Styling */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(to right, #ffffff, #ffffff);
+  /* Gradient Background */
+  padding: 80px 0;
+  margin-bottom: 40px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 1.3rem;
+}
+
+/* Sermon Card */
+.sermon-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sermon-card:hover {
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Sermon Titles */
+.sermon-title {
+  color: #333;
+  font-size: 1.6rem;
+}
+
+.sermon-description {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Media Sections */
+.sermon-media {
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.sermon-video {
+  background-color: #e3f2fd;
+  /* Light Blue */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.sermon-audio {
+  background-color: #e8f5e9;
+  /* Light Green */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 50px 0;
+  }
+
+  .sermon-card {
+    padding: 15px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Navbar Custom Styling */
+.navbar-custom {
+  padding: 10px 0;
+  background-color: #343a40;
+  /* Dark background */
+}
+
+.navbar-custom .navbar-brand {
+  font-size: 20px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Navbar Links */
+.navbar-custom .nav-link {
+  font-size: 16px;
+  padding: 12px 15px;
+  color: white !important;
+  position: relative;
+  /* Needed for underline effect */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Underline Effect */
+.navbar-custom .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  /* Adjusted position */
+  width: 0%;
+  height: 2px;
+  background-color: #f8d210;
+  /* Underline color */
+  transition: width 0.3s ease-in-out;
+}
+
+/* Expand Underline on Hover */
+.navbar-custom .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Giving Button */
+.giving-btn {
+  color: #343a40 !important;
+  /* Dark grey text */
+  background-color: #ffffff;
+  /* White background */
+  border-radius: 15px;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: 0.3s ease-in-out;
+  border: 2px solid #343a40;
+  /* Visible border */
+}
+
+.giving-btn:hover {
+  background-color: #343a40;
+  /* Dark background */
+  color: #ffffff !important;
+  /* White text on hover */
+  border-color: #ffffff;
+  /* White border */
+}

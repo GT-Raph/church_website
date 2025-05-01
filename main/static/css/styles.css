@@ -1,0 +1,122 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 95vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("/static/img/IMG_2325.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* About Section */
+.about-section {
+    background-color: #f4f4f4;
+    padding: 60px 0;
+}
+
+.info-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #333;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.contact-section a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* Events Section */
+.events-section {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+}
+
+.event-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.event-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.event-date {
+    font-weight: bold;
+    color: #007bff;
+}
+
+
+/* Giving Button */
+.giving-btn {
+    color: #343a40 !important;
+    background-color: #ffffff;
+    border-radius: 15px;
+    font-weight: bold;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.giving-btn:hover {
+    background-color: #343a40;
+    color: #ffffff !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh;
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .info-card {
+        margin-bottom: 20px;
+    }
+
+    .contact-section p {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sermons | Our Church</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/sermon styles.css' %}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            <i class="fas fa-church"></i> Our Church
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'event' %}">Events</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'sermons' %}">Sermons</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                <li class="nav-item">
+                    <a class="btn btn-light px-3 giving-btn" href="{% url 'giving' %}">
+                        <i class="fas fa-hand-holding-heart"></i> Giving
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero-section text-center text-dark">
+    <div class="container">
+        <h1 class="fw-bold"><i class="fas fa-book-open"></i> Latest Sermons</h1>
+        <p class="lead">Be inspired and uplifted by powerful messages.</p>
+    </div>
+</div>
+
+<!-- Sermons List -->
+<div class="container my-5">
+    <div class="row">
+        {% for sermon in sermons %}
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card sermon-card shadow-sm border-0">
+                <div class="card-body">
+                    <h3 class="sermon-title fw-bold">
+                        <i class="fas fa-microphone-alt"></i> {{ sermon.title }}
+                    </h3>
+                    <p class="text-muted"><i class="fas fa-calendar-alt"></i> {{ sermon.date }}</p>
+                    <p class="sermon-description">{{ sermon.description }}</p>
+
+                    <!-- Video Section -->
+                    {% if sermon.youtube_link %}
+                    <div class="sermon-media sermon-video my-3">
+                        <h5 class="text-primary"><i class="fas fa-video"></i> Watch the Sermon</h5>
+                        <div class="ratio ratio-16x9 rounded">
+                            <iframe src="{{ sermon.youtube_link }}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Audio Section -->
+                    {% if sermon.audio_file %}
+                    <div class="sermon-media sermon-audio mt-3">
+                        <h5 class="text-success"><i class="fas fa-headphones"></i> Listen to the Sermon</h5>
+                        <audio controls class="w-100">
+                            <source src="{{ sermon.audio_file.url }}" type="audio/mpeg">
+                            Your browser does not support the audio tag.
+                        </audio>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-warning text-center shadow-sm" role="alert">
+                <i class="fas fa-exclamation-circle"></i> No sermons available at the moment.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 Our Church. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

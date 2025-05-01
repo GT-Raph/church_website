@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giving | CCC Apenkwa</title>
+
+    <!-- Bootstrap & FontAwesome -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/giving.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Our Church</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'event' %}">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'sermons' %}">Sermons</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+            <li class="nav-item">
+              <button
+                class="btn btn-light px-3 giving-btn"
+                onclick="location.href='{% url 'giving' %}'"
+              >
+                <i class="fas fa-hand-holding-heart"></i> Giving
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Giving Section -->
+    <section class="giving-section text-center">
+      <div class="container">
+        <h2 class="section-title">Support Our Ministry</h2>
+        <p class="lead">
+          Your generosity helps us continue our mission. Thank you for your
+          support!
+        </p>
+      </div>
+    </section>
+
+    <!-- Donation Options -->
+    <section class="donation-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <!-- Online Donation -->
+          <div class="col-md-4">
+            <div class="donation-card">
+              <i class="fas fa-credit-card icon"></i>
+              <h4>Give Online</h4>
+              <p>Donate securely using our online payment gateway.</p>
+              <a
+                href="https://www.paypal.com/donate"
+                target="_blank"
+                class="btn btn-primary"
+              >
+                <i class="fas fa-donate"></i> Donate Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Bank Transfer -->
+          <div class="col-md-4">
+            <div class="donation-card">
+              <i class="fas fa-university icon"></i>
+              <h4>Bank Transfer</h4>
+              <p><strong>Bank Name:</strong> Example Bank</p>
+              <p><strong>Account Name:</strong> CCC Apenkwa</p>
+              <p><strong>Account Number:</strong> 123-456-789</p>
+            </div>
+          </div>
+
+          <!-- MTN MoMo -->
+          <div class="col-md-4">
+            <div class="donation-card">
+              <i class="fas fa-mobile-alt icon"></i>
+              <h4>MTN Mobile Money</h4>
+              <p><strong>MTN MoMo Number:</strong> 024 123 4567</p>
+              <p><strong>Account Name:</strong> CCC Apenkwa</p>
+
+              <!-- MoMo Button -->
+              <a id="momoButton" class="btn btn-warning">
+                <i class="fas fa-mobile-alt"></i> Send via MoMo
+              </a>
+            </div>
+          </div>
+
+          <!-- MoMo Payment Instructions for Desktop Users
+          <div id="momoInstructions" class="d-none text-start mt-3">
+            <h5>How to Donate from a Computer</h5>
+            <ol>
+              <li>
+                Go to
+                <a href="https://momomerchant.mtn.com.gh/" target="_blank"
+                  ><strong>MTN MoMo Web</strong></a
+                >.
+              </li>
+              <li>Enter <strong>MTN MoMo Number: 024 123 4567</strong></li>
+              <li>Enter <strong>Account Name: CCC Apenkwa</strong></li>
+              <li>Follow the instructions to complete your donation.</li>
+            </ol>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-section">
+      <div class="container text-center">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="lead">We’d love to hear from you! Reach out to us anytime.</p>
+        <div class="row">
+          <div class="col-md-4">
+            <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+            <p>123 Church Street, Apenkwa, Ghana</p>
+          </div>
+          <div class="col-md-4">
+            <h4><i class="fas fa-phone"></i> Phone</h4>
+            <p>+233 123 456 789</p>
+          </div>
+          <div class="col-md-4">
+            <h4><i class="fas fa-envelope"></i> Email</h4>
+            <p>
+              <a href="mailto:info@ccc-apenkwa.org">info@ccc-apenkwa.org</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      <p>&copy; 2025 Our Church. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Detect if the user is on a mobile device
+      function isMobileDevice() {
+        return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        let momoButton = document.getElementById("momoButton");
+        let momoInstructions = document.getElementById("momoInstructions");
+
+        if (isMobileDevice()) {
+          // On mobile: Show "Send via MoMo" button
+          momoButton.setAttribute("href", "tel:*170#");
+          momoButton.innerHTML =
+            '<i class="fas fa-mobile-alt"></i> Send via MoMo';
+          momoInstructions.classList.add("d-none");
+        } else {
+          // On desktop: Show "Pay via MoMo Web" button
+          momoButton.setAttribute("href", "https://momomerchant.mtn.com.gh/");
+          momoButton.innerHTML =
+            '<i class="fas fa-globe"></i> Pay via MoMo Web';
+          momoInstructions.classList.remove("d-none");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+/* General Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #333;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.contact-section a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* Giving Button */
+.giving-btn {
+    color: #343a40 !important;
+    background-color: #ffffff;
+    border-radius: 15px;
+    font-weight: bold;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.giving-btn:hover {
+    background-color: #343a40;
+    color: #ffffff !important;
+}
+
+/* Giving Section */
+.giving-section {
+    padding: 60px 0;
+    text-align: center;
+    background: #fff;
+}
+
+/* Donation Sections */
+.donation-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* Donation Cards */
+.donation-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.donation-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Icons in Cards */
+.icon {
+    font-size: 40px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+/* Button Styling */
+.btn-warning {
+    color: #000;
+    font-weight: bold;
+}
+
+.btn-warning:hover {
+    background-color: #343a40;
+    color: white;
+}
